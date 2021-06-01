@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row" style="margin-top:10px;margin-bottom:10px;">
+        <div class="col-md-2"><label for="file">Create folder:</label></div>
+        <div class="col-md-10">
+            <input type="text" name="text" id="text" />
+        </div>
+        <div class="col-md-2">
+            <br />
+            <input type="submit" class="btn btn-success" value="Create folder" />
+
+        </div>
+    </div>
+}
+
+@ViewBag.Success

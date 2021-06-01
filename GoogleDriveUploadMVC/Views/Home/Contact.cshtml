@@ -1,0 +1,46 @@
+﻿@using GoogleDriveUploadMVC.Models
+@model List<GoogleDriveFile>
+
+
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="google-site-verification" content="0YEajQTQSXO-ETaomNgxRfht6vnodSIdtEYzodZKY-s" />
+    <title>Index</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>File Name</th>
+            <th></th>
+        </tr>
+        @foreach (GoogleDriveFile file in GoogleDriveAPIHelper.GetDriveFiles())
+        {
+            <tr>
+                <td>@file.Name</td>
+
+                <td>
+                    <input type="button" class="DownloadFile" value="Download" data-key=@file.Id style="align-content:center" />
+                </td>
+            </tr>
+        }
+
+    </table>
+    
+</body>
+</html>
+<script>
+    $(document).on('click', '.DownloadFile', function () {
+        debugger;
+        var fileId = $(this).attr("data-key");
+        window.location.href = '/Home/DownloadFile/' + fileId;
+    });
+</script>
